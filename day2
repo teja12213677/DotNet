@@ -1,0 +1,45 @@
+using System;
+
+class Student
+{
+    int id;
+    string name;
+    string city;
+
+    // Constructor
+    public Student(int id, string name, string city)
+    {
+        this.id = id;
+        this.name = name;
+        this.city = city;
+    }
+
+    // Method to display details
+    public void DisplayDetails()
+    {
+        Console.WriteLine($"ID: {id}, Name: {name}, City: {city}");
+    }
+}
+
+class day2
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Hello, World!");
+
+        Student sObj = new Student(123, "Alok", "Delhi");
+        sObj.DisplayDetails();
+
+        sObj = new Student(123, "Alok", "Chennai");
+        sObj.DisplayDetails();
+
+        string[] cities = { "Delhi", "Mumbai", "Chennai", "Kolkata" };
+        int i = 0;
+
+        while (i < cities.Length)
+        {
+            Console.WriteLine(cities[i]);
+            i++;
+        }
+    }
+}
