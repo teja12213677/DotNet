@@ -1,0 +1,70 @@
+using System;
+using System.Collections;
+public class MeditationCenter
+{
+    public int MemberId{get; set;}
+    public int Age { get; set;}
+    public double Weight {get; set;}
+    public double Height{get; set;}
+    public string Goal { get; set;}
+    public double BMI { get; set;}
+    
+    public void CalculateBMI()
+        {
+             double bmi=Weight/(Height*Height);
+            BMI=Math.Floor(bmi*100)/100;
+        }
+        
+        public double CalculateFee()
+        {
+            if(Goal=="Weigth Loss")
+            {
+            if(BMI>=25 && BMI <30)
+            return 2000;
+            else if(BMI>=30 && BMI<35)
+            return 2500;
+            else if(BMI>=35)
+            return 3000;
+            }
+            else if(Goal == "Weight Gain")
+            {
+                return 2500;
+            }
+            return 0;
+        }
+            
+            
+}
+public class Program
+{
+    static void Main(string[] args)
+    {
+        ArrayList member=new ArrayList();
+        
+        Console.WriteLine("ENter number of members: ");
+        int n=int.Parse(Console.ReadLine());
+        for(int i=0;i<n;i++)
+        {
+            MeditationCenter m=new MeditationCenter();
+            Console.WriteLine("ENter the memberId: ");
+            m.MemberId=int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Age: ");
+            m.Age=int.Parse(Console.ReadLine());
+            Console.WriteLine("ENter theh Weight: ");
+            m.Weight=double.Parse(Console.ReadLine());
+            Console.WriteLine("ENter the Height: ");
+            m.Height=double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the Goal: ");
+            m.Goal=Console.ReadLine();
+            m.CalculateBMI();
+            
+            member.Add(m);
+        }
+        foreach(MeditationCenter m in member)
+        {
+            Console.WriteLine("MemberId: "+m.MemberId);
+            Console.WriteLine("BMI: "+m.BMI);
+            Console.WriteLine("Fee: "+m.CalculateFee());
+        }
+    }
+}
